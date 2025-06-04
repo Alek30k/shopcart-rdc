@@ -1,8 +1,9 @@
+import Container from "@/components/Container";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
   return (
-    <div className="p-10 bg-shop_light_pink">
+    <Container className="bg-shop_light_pink">
       <h2 className="text-xl font-semibold">Home</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
@@ -11,7 +12,7 @@ const Home = () => {
         Dolore, aut ullam!
       </p>
       <Button size="lg">holaaaaaaaaaaaaa</Button>
-    </div>
+    </Container>
   );
 };
 
