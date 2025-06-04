@@ -11,6 +11,7 @@
   --color-shop_light_bg: #f6f6f6;
   --color-shop_light_green: #3b9c3c;
   --color-shop_orange: #fb6c08;
+  --color-shop_light_green: #3b9c3c;
   --color-darkcolor: #151515;
   --color-lightcolor: #52525b;
   --color-lightorange: #fca99b;
@@ -22,7 +23,6 @@ darkText:#686e7d,
 lightBg:#F8F8FB,
 darkRed:#F02757,
 lighText:#ababab,
-lightGreen:#93D991,
 productBg:#f1f3f8 */
 
 @theme inline {
