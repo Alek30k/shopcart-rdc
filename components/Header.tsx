@@ -1,6 +1,9 @@
+import CartIcon from "./CartIcon";
 import Container from "./Container";
+import FavoriteButton from "./FavoriteButton";
 import HeaderMenu from "./HeaderMenu";
 import Logo from "./Logo";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -11,7 +14,11 @@ const Header = () => {
         {/* NavBotton */}
         <HeaderMenu />
         {/* NavAdmin */}
-        <div className="">Others</div>
+        <div className="w-auto md:w-1/3 flex">
+          <SearchBar />
+          <CartIcon />
+          <FavoriteButton />
+        </div>
       </Container>
     </header>
   );
