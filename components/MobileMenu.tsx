@@ -4,7 +4,7 @@ import { AlignLeft } from "lucide-react";
 import SideMenu from "./SideMenu";
 import { useState } from "react";
 
-const MobilMenu = () => {
+const MobileMenu = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <>
@@ -21,4 +21,4 @@ const MobilMenu = () => {
   );
 };
 
-export default MobilMenu;
+export default MobileMenu;

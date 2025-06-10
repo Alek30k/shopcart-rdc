@@ -4,11 +4,10 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { Flame } from "lucide-react";
-// import Title from "./Title";
 import ProductSideMenu from "./ProductSideMenu";
-// import AddToCartButton from "./AddToCartButton";
 import Title from "./Title";
 import PriceView from "./PriceView";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -65,9 +64,9 @@ const ProductCard = ({ product }: { product: Product }) => {
         <PriceView
           price={product?.price}
           discount={product?.discount}
-          className="text-sm"
+          className="text-lg"
         />
-        {/* <AddToCartButton product={product} className="w-36 rounded-full" /> */}
+        <AddToCartButton product={product} className="w-36 rounded-full" />
       </div>
     </div>
   );
