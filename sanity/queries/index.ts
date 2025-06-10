@@ -1,16 +1,5 @@
 import { sanityFetch } from "../lib/live";
-// import {
-//   BLOG_CATEGORIES,
-//   BRAND_QUERY,
-//   BRANDS_QUERY,
-//   DEAL_PRODUCTS,
-//   GET_ALL_BLOG,
-//   LATEST_BLOG_QUERY,
-//   MY_ORDERS_QUERY,
-//   OTHERS_BLOG_QUERY,
-//   PRODUCT_BY_SLUG_QUERY,
-//   SINGLE_BLOG_QUERY,
-// } from "./query";
+import { BRANDS_QUERY } from "./query";
 
 const getCategories = async (quantity?: number) => {
   try {
@@ -34,15 +23,15 @@ const getCategories = async (quantity?: number) => {
   }
 };
 
-// const getAllBrands = async () => {
-//   try {
-//     const { data } = await sanityFetch({ query: BRANDS_QUERY });
-//     return data ?? [];
-//   } catch (error) {
-//     console.log("Error fetching all brands:", error);
-//     return [];
-//   }
-// };
+const getAllBrands = async () => {
+  try {
+    const { data } = await sanityFetch({ query: BRANDS_QUERY });
+    return data ?? [];
+  } catch (error) {
+    console.log("Error fetching all brands:", error);
+    return [];
+  }
+};
 
 // const getLatestBlogs = async () => {
 //   try {
@@ -160,7 +149,7 @@ const getCategories = async (quantity?: number) => {
 
 export {
   getCategories,
-  // getAllBrands,
+  getAllBrands,
   // getLatestBlogs,
   // getDealProducts,
   // getProductBySlug,
