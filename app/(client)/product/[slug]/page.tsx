@@ -4,15 +4,15 @@ import FavoriteButton from "@/components/FavoriteButton";
 import ImageView from "@/components/ImageView";
 
 import PriceView from "@/components/PriceView";
-// import ProductCharacteristics from "@/components/ProductCharacteristics";
+import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { getProductBySlug } from "@/sanity/queries";
-import { CornerDownLeft, StarIcon, Truck } from "lucide-react";
+import { CornerDownLeft, Truck } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
-// import { FaRegQuestionCircle } from "react-icons/fa";
-// import { FiShare2 } from "react-icons/fi";
-// import { RxBorderSplit } from "react-icons/rx";
-// import { TbTruckDelivery } from "react-icons/tb";
+import { FaRegQuestionCircle } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
+import { RxBorderSplit } from "react-icons/rx";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const SingleProductPage = async ({
   params,
@@ -52,13 +52,13 @@ const SingleProductPage = async ({
           <AddToCartButton product={product} />
           <FavoriteButton showProduct={true} product={product} />
         </div>
-        {/* <ProductCharacteristics product={product} /> */}
+        <ProductCharacteristics product={product} />
         <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
-            {/* <RxBorderSplit className="text-lg" /> */}
+            <RxBorderSplit className="text-lg" />
             <p>Compare color</p>
           </div>
-          {/* <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
+          <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <FaRegQuestionCircle className="text-lg" />
             <p>Ask a question</p>
           </div>
@@ -69,7 +69,7 @@ const SingleProductPage = async ({
           <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
             <FiShare2 className="text-lg" />
             <p>Share</p>
-          </div> */}
+          </div>
         </div>
         <div className="flex flex-col">
           <div className="border border-lightColor/25 border-b-0 p-3 flex items-center gap-2.5">
