@@ -3,9 +3,10 @@ import { Product } from "@/sanity.types";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ShoppingBag } from "lucide-react";
+import QuantityButtons from "./QuantityButtons";
 // import useStore from "@/store";
 // import toast from "react-hot-toast";
-// import QuantityButtons from "./QuantityButtons";
+
 // import PriceFormatter from "./PriceFormatter";
 
 interface Props {
@@ -36,7 +37,7 @@ const AddToCartButton = ({ product, className }: Props) => {
       <div className="text-sm w-full">
         <div className="flex items-center justify-between">
           <span className="text-xs text-darkColor/80">Quantity</span>
-          {/* <QuantityButtons product={product} /> */}
+          <QuantityButtons product={product} />
         </div>
         <div className="flex items-center justify-between border-t pt-1">
           <span className="text-xs font-semibold">Subtotal</span>
