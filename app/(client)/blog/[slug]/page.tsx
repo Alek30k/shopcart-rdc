@@ -25,6 +25,8 @@ const SingleBlogPage = async ({
   const blog: SINGLE_BLOG_QUERYResult = await getSingleBlog(slug);
   if (!blog) return notFound();
 
+  console.log(blog);
+
   return (
     <div className="py-10">
       <Container className="grid grid-cols-1 lg:grid-cols-4 gap-5">
