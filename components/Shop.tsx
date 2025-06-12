@@ -16,9 +16,8 @@ interface Props {
   categories: Category[];
   brands: BRANDS_QUERYResult;
 }
-const Shop = ({ categories, brands }: Props) => {
-  console.log(categories, brands);
 
+const Shop = ({ categories, brands }: Props) => {
   const searchParams = useSearchParams();
   const brandParams = searchParams?.get("brand");
   const categoryParams = searchParams?.get("category");
@@ -31,11 +30,13 @@ const Shop = ({ categories, brands }: Props) => {
     brandParams || null
   );
   const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
+
   const fetchProducts = async () => {
     setLoading(true);
     try {
       let minPrice = 0;
       let maxPrice = 10000;
+
       if (selectedPrice) {
         const [min, max] = selectedPrice.split("-").map(Number);
         minPrice = min;
@@ -67,6 +68,7 @@ const Shop = ({ categories, brands }: Props) => {
   useEffect(() => {
     fetchProducts();
   }, [selectedCategory, selectedBrand, selectedPrice]);
+
   return (
     <div className="border-t">
       <Container className="mt-5">
