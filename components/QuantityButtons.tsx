@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface Props {
   product: Product;
@@ -18,18 +18,18 @@ const QuantityButtons = ({ product, className }: Props) => {
   const handleRemoveProduct = () => {
     removeItem(product?._id);
     if (itemCount > 1) {
-      // toast.success("Quantity Decreased successfully!");
+      toast.success("Quantity Decreased successfully!");
     } else {
-      // toast.success(`${product?.name?.substring(0, 12)} removed successfully!`);
+      toast.success(`${product?.name?.substring(0, 12)} removed successfully!`);
     }
   };
 
   const handleAddToCart = () => {
     if ((product?.stock as number) > itemCount) {
       addItem(product);
-      // toast.success("Quantity Increased successfully!");
+      toast.success("Quantity Increased successfully!");
     } else {
-      // toast.error("Can not add more than available stock");
+      toast.error("Can not add more than available stock");
     }
   };
 
