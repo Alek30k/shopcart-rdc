@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const FavoriteButton = ({
   showProduct = false,
-  product,
+  // product,
 }: {
   showProduct?: boolean;
   product?: Product | null | undefined;
