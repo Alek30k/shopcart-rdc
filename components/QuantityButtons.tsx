@@ -1,5 +1,5 @@
 import { Product } from "@/sanity.types";
-// import useStore from "@/store";
+import useStore from "@/store";
 import React from "react";
 import { Button } from "./ui/button";
 import { Minus, Plus } from "lucide-react";
@@ -10,32 +10,27 @@ interface Props {
   product: Product;
   className?: string;
 }
-
 const QuantityButtons = ({ product, className }: Props) => {
-  //   const { addItem, removeItem, getItemCount } = useStore();
-  //   const itemCount = getItemCount(product?._id);
+  const { addItem, removeItem, getItemCount } = useStore();
+  const itemCount = getItemCount(product?._id);
   const isOutOfStock = product?.stock === 0;
 
   const handleRemoveProduct = () => {
-    //     removeItem(product?._id);
-    //     if (itemCount > 1) {
-    //     //   toast.success("Quantity Decreased successfully!");
-    //     alert("Quantity Decreased successfully!");
-    //     } else {
-    //     //   toast.success(`${product?.name?.substring(0, 12)} removed successfully!`);
-    //     alert("${product?.name?.substring(0, 12)} removed successfully!");
-    //     }
+    removeItem(product?._id);
+    if (itemCount > 1) {
+      // toast.success("Quantity Decreased successfully!");
+    } else {
+      // toast.success(`${product?.name?.substring(0, 12)} removed successfully!`);
+    }
   };
 
   const handleAddToCart = () => {
-    // if ((product?.stock as number) > itemCount) {
-    //   addItem(product);
-    // //   toast.success("Quantity Increased successfully!");
-    // alert("Quantity Increased successfully!")
-    // } else {
-    // //   toast.error("Can not add more than available stock");
-    // alert("Can not add more than available stock")
-    // }
+    if ((product?.stock as number) > itemCount) {
+      addItem(product);
+      // toast.success("Quantity Increased successfully!");
+    } else {
+      // toast.error("Can not add more than available stock");
+    }
   };
 
   return (
@@ -44,13 +39,13 @@ const QuantityButtons = ({ product, className }: Props) => {
         onClick={handleRemoveProduct}
         variant="outline"
         size="icon"
-        // disabled={itemCount === 0 || isOutOfStock}
+        disabled={itemCount === 0 || isOutOfStock}
         className="w-6 h-6 border-[1px] hover:bg-shop_dark_green/20 hoverEffect"
       >
         <Minus />
       </Button>
       <span className="font-semibold text-sm w-6 text-center text-darkColor">
-        {/* {itemCount} */}itemcount
+        {itemCount}
       </span>
       <Button
         onClick={handleAddToCart}
