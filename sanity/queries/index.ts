@@ -100,10 +100,10 @@ const getMyOrders = async (userId: string) => {
       query: MY_ORDERS_QUERY,
       params: { userId },
     });
-    return orders?.data || null;
+    return orders?.data ?? []; // ← asegura un array vacío si no hay datos
   } catch (error) {
     console.error("Error fetching product by ID:", error);
-    return null;
+    return []; // ← también asegura array si hay error
   }
 };
 

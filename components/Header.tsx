@@ -16,7 +16,7 @@ import { getMyOrders } from "@/sanity/queries";
 const Header = async () => {
   const user = await currentUser();
   const { userId } = await auth();
-  let orders = null;
+  let orders = [];
 
   if (userId) {
     orders = await getMyOrders(userId);
