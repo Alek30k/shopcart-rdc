@@ -1,9 +1,9 @@
 "use client";
 
-// import {
-//   createCheckoutSession,
-//   Metadata,
-// } from "@/actions/createCheckoutSession";
+import {
+  createCheckoutSession,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 import Container from "@/components/Container";
 import EmptyCart from "@/components/EmptyCart";
 import NoAccess from "@/components/NoAccess";
@@ -26,7 +26,7 @@ import { Address } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import useStore from "@/store";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +46,7 @@ const CartPage = () => {
   const groupedItems = useStore((state) => state.getGroupedItems());
 
   const { isSignedIn } = useAuth();
-  // const { user } = useUser();
+  const { user } = useUser();
   const [addresses, setAddresses] = useState<Address[] | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
@@ -86,17 +86,17 @@ const CartPage = () => {
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      //   const metadata: Metadata = {
-      //     orderNumber: crypto.randomUUID(),
-      //     customerName: user?.fullName ?? "Unknown",
-      //     customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
-      //     clerkUserId: user?.id,
-      //     address: selectedAddress,
-      //   };
-      //   const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
-      //   if (checkoutUrl) {
-      //     window.location.href = checkoutUrl;
-      //   }
+      const metadata: Metadata = {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName ?? "Unknown",
+        customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
+        clerkUserId: user?.id,
+        address: selectedAddress,
+      };
+      const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
     } catch (error) {
       console.error("Error creating checkout session:", error);
     } finally {
