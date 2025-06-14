@@ -17,6 +17,7 @@ const Header = async () => {
   const user = await currentUser();
   const { userId } = await auth();
   let orders = null;
+
   if (userId) {
     orders = await getMyOrders(userId);
   }
