@@ -41,10 +41,12 @@ const CartPage = () => {
     getSubTotalPrice,
     resetCart,
   } = useStore();
+
   const [loading, setLoading] = useState(false);
   const groupedItems = useStore((state) => state.getGroupedItems());
+
   const { isSignedIn } = useAuth();
-  //   const { user } = useUser();
+  // const { user } = useUser();
   const [addresses, setAddresses] = useState<Address[] | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
@@ -66,9 +68,11 @@ const CartPage = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchAddresses();
   }, []);
+
   const handleResetCart = () => {
     const confirmed = window.confirm(
       "Are you sure you want to reset your cart?"
