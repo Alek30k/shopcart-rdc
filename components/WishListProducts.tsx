@@ -53,14 +53,14 @@ const WishListProducts = () => {
                   ?.slice(0, visibleProducts)
                   ?.map((product: Product) => (
                     <tr key={product?._id} className="border-b">
-                      <td className="px-2 py-4 flex items-center gap-2">
+                      <td className="px-0 md:px-2 py-4 flex items-center gap-2">
                         <X
                           onClick={() => {
                             removeFromFavorite(product?._id);
                             toast.success("Product removed from wishlist");
                           }}
                           size={18}
-                          className="hover:text-red-600 hover:cursor-pointer hoverEffect"
+                          className="hover:text-red-600 hover:cursor-pointer size-9 hoverEffect "
                         />
                         {product?.images && (
                           <Link
@@ -78,7 +78,7 @@ const WishListProducts = () => {
                         )}
                         <p className="line-clamp-1">{product?.name}</p>
                       </td>
-                      <td className="p-2 capitalize hidden md:table-cell">
+                      <td className="px-0 md:px-2  capitalize hidden md:table-cell">
                         {product?.categories && (
                           <p className="uppercase line-clamp-1 text-xs font-medium">
                             {product.categories.map((cat) => cat).join(", ")}
@@ -102,7 +102,7 @@ const WishListProducts = () => {
                       <td className="p-2">
                         <PriceFormatter amount={product?.price} />
                       </td>
-                      <td className="p-2">
+                      <td className="px-0 md:px-2 ">
                         <AddToCartButton product={product} className="w-full" />
                       </td>
                     </tr>
@@ -132,7 +132,7 @@ const WishListProducts = () => {
           {favoriteProduct?.length > 0 && (
             <Button
               onClick={handleResetWishlist}
-              className="mb-5 font-semibold"
+              className="my-5 font-semibold"
               variant="destructive"
               size="lg"
             >
