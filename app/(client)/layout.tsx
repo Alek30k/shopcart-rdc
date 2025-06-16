@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
-import SearchBar from "@/components/search-bar";
 
 export const metadata: Metadata = {
   title: {
@@ -21,9 +20,7 @@ export default function RootLayout({
     <ClerkProvider>
       <div className="flex flex-col min-h-screen">
         <Header />
-        <div className="md:hidden p-2">
-          <SearchBar />
-        </div>
+
         <main className="flex-1">{children}</main>
         <Footer />
       </div>

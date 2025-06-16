@@ -71,6 +71,9 @@ const Header = async () => {
           </ClerkLoaded>
         </div>
       </Container>
+      <div className="md:hidden p-2">
+        <SearchBar />
+      </div>
     </header>
   );
 };
