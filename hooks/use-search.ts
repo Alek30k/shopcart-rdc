@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Product } from "@/sanity.types";
-import { searchProducts } from "@/sanity/queries";
+import { searchProducts } from "@/sanity/queriesSearch";
 
 export function useSearch() {
   const [query, setQuery] = useState("");

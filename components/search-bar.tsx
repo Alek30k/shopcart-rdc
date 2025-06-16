@@ -4,10 +4,10 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import { Search, X, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { searchProductsSimple } from "@/sanity/queries"; // Usar la versión simple primero
 import type { Product } from "@/sanity.types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { searchProductsSimple } from "@/sanity/queriesSearch";
 
 const SearchBarcomp = () => {
   const [query, setQuery] = useState("");

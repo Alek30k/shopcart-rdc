@@ -53,7 +53,6 @@ const getLatestBlogs = async () => {
     return [];
   }
 };
-
 const getDealProducts = async () => {
   try {
     const { data } = await sanityFetch({ query: DEAL_PRODUCTS });
@@ -63,7 +62,6 @@ const getDealProducts = async () => {
     return [];
   }
 };
-
 const getProductBySlug = async (slug: string) => {
   try {
     const product = await sanityFetch({
@@ -78,7 +76,6 @@ const getProductBySlug = async (slug: string) => {
     return null;
   }
 };
-
 const getBrand = async (slug: string) => {
   try {
     const product = await sanityFetch({
@@ -93,20 +90,18 @@ const getBrand = async (slug: string) => {
     return null;
   }
 };
-
 const getMyOrders = async (userId: string) => {
   try {
     const orders = await sanityFetch({
       query: MY_ORDERS_QUERY,
       params: { userId },
     });
-    return orders?.data ?? []; // ← asegura un array vacío si no hay datos
+    return orders?.data || null;
   } catch (error) {
     console.error("Error fetching product by ID:", error);
-    return []; // ← también asegura array si hay error
+    return null;
   }
 };
-
 const getAllBlogs = async (quantity: number) => {
   try {
     const { data } = await sanityFetch({
@@ -132,7 +127,6 @@ const getSingleBlog = async (slug: string) => {
     return [];
   }
 };
-
 const getBlogCategories = async () => {
   try {
     const { data } = await sanityFetch({
@@ -157,7 +151,6 @@ const getOthersBlog = async (slug: string, quantity: number) => {
     return [];
   }
 };
-
 export {
   getCategories,
   getAllBrands,

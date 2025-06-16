@@ -1,7 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import Container from "@/components/Container";
 import { Search } from "lucide-react";
-import { searchProducts } from "@/sanity/queries";
+import { searchProducts } from "@/sanity/queriesSearch";
 
 interface SearchPageProps {
   searchParams: {
