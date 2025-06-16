@@ -6,13 +6,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SocialMedia from "./SocialMedia";
 import { useOutsideClick } from "@/hooks";
+import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
+import SignIn from "./SignIn";
+import { User } from "@clerk/nextjs/server";
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  user: User | null;
 }
 
-const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
+const SideMenu: FC<SidebarProps> = ({ isOpen, onClose, user }) => {
   const pathname = usePathname();
   const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
 
@@ -35,6 +39,17 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
             <X />
           </button>
         </div>
+        <div className="">
+          <ClerkLoaded>
+            <div className="flex items-center gap-3">
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+              {!user && <SignIn />}
+              <h2 className="text-white">{user?.firstName}</h2>
+            </div>
+          </ClerkLoaded>
+        </div>
         <div className=" flex flex-col  space-y-3.5 tracking-wide capitalize font-semibold ">
           {headerData?.map((item) => (
             <Link
@@ -48,6 +63,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
             </Link>
           ))}
         </div>
+
         <SocialMedia />
       </div>
     </div>

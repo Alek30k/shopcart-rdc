@@ -1,4 +1,3 @@
-import React from "react";
 import Container from "./Container";
 import Logo from "./Logo";
 import HeaderMenu from "./HeaderMenu";
@@ -10,13 +9,24 @@ import MobileMenu from "./MobileMenu";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { Logs } from "lucide-react";
+import { LogInIcon as Logs } from "lucide-react";
 import { getMyOrders } from "@/sanity/queries";
 
 const Header = async () => {
-  const user = await currentUser();
+  const clerkUser = await currentUser(); // Cambiar nombre para evitar confusión
   const { userId } = await auth();
   let orders = [];
+
+  // Serializar el usuario para pasarlo al Client Component
+  const serializedUser = clerkUser
+    ? {
+        id: clerkUser.id,
+        firstName: clerkUser.firstName,
+        lastName: clerkUser.lastName,
+        imageUrl: clerkUser.imageUrl,
+        emailAddress: clerkUser.emailAddresses[0]?.emailAddress || null,
+      }
+    : null;
 
   if (userId) {
     orders = await getMyOrders(userId);
@@ -26,7 +36,8 @@ const Header = async () => {
     <header className="sticky top-0 z-50 py-5 bg-white/70 backdrop-blur-md">
       <Container className="flex items-center justify-between text-lightColor">
         <div className="w-auto md:w-1/3 flex items-center gap-2.5 justify-start md:gap-0">
-          <MobileMenu />
+          {/* Pasar el usuario serializado en lugar del objeto completo */}
+          <MobileMenu user={serializedUser} />
           <Logo />
         </div>
         <HeaderMenu />
@@ -35,7 +46,8 @@ const Header = async () => {
           <CartIcon />
           <FavoriteButton />
 
-          {user && (
+          {/* Usar clerkUser para las verificaciones */}
+          {clerkUser && (
             <Link
               href={"/orders"}
               className="group relative hover:text-shop_light_green hoverEffect"
@@ -49,9 +61,11 @@ const Header = async () => {
 
           <ClerkLoaded>
             <SignedIn>
-              <UserButton />
+              <div className="hidden md:inline-block">
+                <UserButton />
+              </div>
             </SignedIn>
-            {!user && <SignIn />}
+            {!clerkUser && <SignIn />}
           </ClerkLoaded>
         </div>
       </Container>
